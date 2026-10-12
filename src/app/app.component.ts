@@ -8,5 +8,6 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
 })
 export class App {
+  public nomAplicacio = 'MyLibrary';
   protected readonly title = signal('ioc-angular-my-library-magi-clemente');
 }
