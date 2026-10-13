@@ -1,59 +1,20 @@
-# IocAngularMyLibraryMagiClemente
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
-
-## Development server
-
-To start a local development server, run:
-
-```bash
+# Nom de l'aplicació
+MyLibrary
+## Autor/a
+Magí Clemente 
+## Descripció
+MyLibrary és un catàleg de llibres per consultar i organitzar una biblioteca personal. S'anirà ampliant durant el semestre
+## Versions utilitzades
+- Node.js: v24.21.0
+- npm: 11.19.0
+- Angular CLI: 22.2.2
+- Angular: 22.2.2
+- Git: 2.56.0.windows.2
+## Com crear i executar el projecte
+Per crear el projecte: ng new ioc-angular-my-library-magi-clemente --routing --style=scss --ssr=false --standalone --file-name-style-guide=2016 --skip-git --package-manager=npm
+Per executar el projecte: npm install
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Estat de l'EAC1
+EAC compleatat amb els cinc exercicis.
+## Enllaç del repositori
+https://github.com/maclementegu/ioc-angular-my-library-magi-clemente
