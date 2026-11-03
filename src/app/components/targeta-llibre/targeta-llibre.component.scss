@@ -1,0 +1,44 @@
+.targeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 1rem;
+  border: 2px solid #d7dee4;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.targeta-seleccionada {
+  border-color: #245bff;
+  background: #f3f6ff;
+}
+
+.capcalera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.autor {
+  margin: 0;
+  color: #53606a;
+  font-style: italic;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  margin-top: auto;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}

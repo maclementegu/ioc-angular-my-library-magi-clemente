@@ -1,0 +1,9 @@
+<section class="llista" aria-label="Llistat de llibres">
+  @for (llibre of llibres; track llibre.id) {
+    <app-targeta-llibre
+      [llibre]="llibre"
+      [seleccionada]="llibre.id === llibreSeleccionatId"
+      (selecciona)="onSelecciona($event)"
+    />
+  }
+</section>

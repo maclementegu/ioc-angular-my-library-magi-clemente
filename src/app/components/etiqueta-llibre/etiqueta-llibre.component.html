@@ -1,0 +1,7 @@
+<span class="etiqueta" [class.etiqueta-destacada]="destacat">
+  {{ categoria }}
+  @if (destacat) {
+    <span aria-hidden="true">★</span>
+    <span class="visually-hidden">(destacat)</span>
+  }
+</span>

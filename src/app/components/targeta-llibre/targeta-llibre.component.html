@@ -1,0 +1,12 @@
+<article class="targeta" [class.targeta-seleccionada]="seleccionada">
+  <header class="capcalera">
+    <h3>{{ llibre.titol }}</h3>
+    <app-etiqueta-llibre [categoria]="llibre.categoria" [destacat]="llibre.destacat ?? false" />
+  </header>
+  <p class="autor">{{ llibre.autor }}</p>
+  <p>{{ llibre.descripcio }}</p>
+  <p class="valoracio">Valoració: {{ llibre.valoracio }}/5</p>
+  <button type="button" (click)="onSeleccionar()" [attr.aria-pressed]="seleccionada">
+    Veure detall
+  </button>
+</article>

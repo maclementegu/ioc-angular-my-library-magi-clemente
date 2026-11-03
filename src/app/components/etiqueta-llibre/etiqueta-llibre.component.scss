@@ -1,0 +1,23 @@
+.etiqueta {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: #e8eefc;
+  color: #1f3a8a;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.etiqueta-destacada {
+  background: #fff3cd;
+  color: #7a5200;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

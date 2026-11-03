@@ -1,30 +1,16 @@
-
 <main class="contenidor">
   <header>
     <h1>{{ nomAplicacio }}</h1>
     <p>Projecte de Magí Clemente: un catàleg de llibres per consultar i organitzar la teva biblioteca.</p>
   </header>
 
-  <section class="contingut">
-    <article class="targeta">
-      <h2>Dades del projecte</h2>
-      <ul>
-        <li><strong>Aplicació:</strong> {{ nomAplicacio }}</li>
-        <li><strong>Autor:</strong> Magí Clemente</li>
-        <li><strong>Mòdul:</strong> DA2_OA01 - Programació avançada amb Angular</li>
-        <li><strong>Activitat:</strong> EAC1</li>
-      </ul>
-    </article>
+  <app-llista-llibres
+    [llibres]="llibres"
+    [llibreSeleccionatId]="llibreSeleccionat?.id ?? null"
+    (selecciona)="onSelecciona($event)"
+  />
 
-    <aside class="nota">
-         <p>Nota: La base del projecte. Hot reload comprovat.</p>
-    </aside>
-  </section>
-
-  <p class="estat">Projecte base llest</p>
+  <p>Llibre seleccionat: {{ llibreSeleccionat?.titol ?? 'cap' }}</p>
 </main>
 
 <router-outlet />
-
-
-
