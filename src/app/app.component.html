@@ -4,6 +4,14 @@
     <p>Projecte de Magí Clemente: un catàleg de llibres per consultar i organitzar la teva biblioteca.</p>
   </header>
 
+    <app-barra-filtres (filtresCanviats)="onFiltresCanviats($event)" />
+
+  <app-llista-llibres
+    [llibres]="llibresFiltrats"
+    [llibreSeleccionatId]="llibreSeleccionat?.id ?? null"
+    (selecciona)="onSelecciona($event)"
+  />
+
   <app-llista-llibres
     [llibres]="llibres"
     [llibreSeleccionatId]="llibreSeleccionat?.id ?? null"

@@ -1,0 +1,31 @@
+.filtres {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #d7dee4;
+  border-radius: 8px;
+  background: #f5f6f7;
+}
+
+.camp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 220px;
+}
+
+small {
+  color: #53606a;
+}
+
+.error {
+  color: #8a1f11;
+}
+
+.accions {
+  display: flex;
+  gap: 0.5rem;
+  align-self: flex-end;
+}

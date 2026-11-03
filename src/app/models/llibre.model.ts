@@ -16,3 +16,7 @@ export interface Llibre {
   valoracio: number; // de 0 a 5
   destacat?: boolean;
 }
+  export interface FiltresLlibre {
+  text: string;
+  categoria: CategoriaLlibre | '';
+}
