@@ -1,6 +1,6 @@
 <form class="filtres" #formulari="ngForm" (ngSubmit)="onAplicar()" aria-label="Filtres del catàleg">
   <div class="camp">
-    <label for="text">Cerca per títol o autor</label>
+    <label for="text">Buscar per títol o autor</label>
     <input
       id="text"
       name="text"
@@ -15,9 +15,9 @@
     @if (campText.invalid && (campText.dirty || campText.touched)) {
       <strong id="text-error" class="error" role="alert">
         @if (campText.errors?.['required']) {
-          Cal escriure un text de cerca.
+          Cal escriure un text de busqueda.
         } @else {
-          El text ha de tenir almenys 3 caràcters.
+          El text ha de tenir mínim 3 caràcters.
         }
       </strong>
     }
