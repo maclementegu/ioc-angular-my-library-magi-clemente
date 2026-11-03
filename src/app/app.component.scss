@@ -72,3 +72,16 @@ dd {
     position: static;
   }
 }
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  padding: 0.5rem 1rem;
+  background: #111;
+  color: #fff;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
