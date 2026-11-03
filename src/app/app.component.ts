@@ -4,9 +4,10 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LlistaLlibresComponent } from './components/llista-llibres/llista-llibres.component';
 import { LLIBRES_MOCK } from './mocks/dades-mocks';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  imports: [RouterOutlet, LlistaLlibresComponent, BarraFiltresComponent],
+  imports: [RouterOutlet, LlistaLlibresComponent, BarraFiltresComponent, DatePipe],
   selector: 'app-root',
   styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
@@ -34,6 +35,9 @@ export class App {
 
   onFiltresCanviats(filtres: FiltresLlibre): void {
     this.filtres = filtres;
+  }
+    onTancarDetall(): void {
+    this.llibreSeleccionat = null;
   }
 
   onSelecciona(llibre: Llibre): void {

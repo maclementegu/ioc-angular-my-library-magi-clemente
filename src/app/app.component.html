@@ -4,21 +4,45 @@
     <p>Projecte de Magí Clemente: un catàleg de llibres per consultar i organitzar la teva biblioteca.</p>
   </header>
 
-    <app-barra-filtres (filtresCanviats)="onFiltresCanviats($event)" />
+  <div class="disposicio">
+    <section class="principal" aria-label="Catàleg de llibres">
+      <app-barra-filtres (filtresCanviats)="onFiltresCanviats($event)" />
 
-  <app-llista-llibres
-    [llibres]="llibresFiltrats"
-    [llibreSeleccionatId]="llibreSeleccionat?.id ?? null"
-    (selecciona)="onSelecciona($event)"
-  />
+      <p class="comptador" aria-live="polite">
+        Mostrant {{ llibresFiltrats.length }} de {{ llibres.length }} llibres
+      </p>
 
-  <app-llista-llibres
-    [llibres]="llibres"
-    [llibreSeleccionatId]="llibreSeleccionat?.id ?? null"
-    (selecciona)="onSelecciona($event)"
-  />
+      @if (llibresFiltrats.length > 0) {
+        <app-llista-llibres
+          [llibres]="llibresFiltrats"
+          [llibreSeleccionatId]="llibreSeleccionat?.id ?? null"
+          (selecciona)="onSelecciona($event)"
+        />
+      } @else {
+        <p class="sense-resultats" role="status">
+          No s'ha trobat cap llibre amb aquests filtres. Prova amb un altre text o categoria.
+        </p>
+      }
+    </section>
 
-  <p>Llibre seleccionat: {{ llibreSeleccionat?.titol ?? 'cap' }}</p>
+    <aside class="detall" aria-label="Detall del llibre" aria-live="polite">
+      @if (llibreSeleccionat) {
+        <h2>{{ llibreSeleccionat.titol }}</h2>
+        <p class="autor">{{ llibreSeleccionat.autor }} · {{ llibreSeleccionat.categoria }}</p>
+        <p>{{ llibreSeleccionat.descripcio }}</p>
+        <dl>
+          <dt>Afegit al catàleg</dt>
+          <dd>{{ llibreSeleccionat.dataAfegida | date: 'dd/MM/yyyy' }}</dd>
+          <dt>Valoració</dt>
+          <dd>{{ llibreSeleccionat.valoracio }}/5</dd>
+        </dl>
+        <button type="button" (click)="onTancarDetall()">Tanca el detall</button>
+      } @else {
+        <h2>Detall</h2>
+        <p>Selecciona un llibre per veure'n el detall.</p>
+      }
+    </aside>
+  </div>
 </main>
 
 <router-outlet />
