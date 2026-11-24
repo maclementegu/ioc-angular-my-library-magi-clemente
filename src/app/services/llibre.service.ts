@@ -52,6 +52,9 @@ export class LlibreService {
   reintentar(): void {
     this.criteris$.next(this.darrersCriteris);
   }
+    comptarResultats(terme: string): Observable<number> {
+    return this.obtenirLlibres({ text: terme, categoria: '' }).pipe(map((llibres) => llibres.length));
+  }
 
   crearLlibre(nou: NouLlibre): Observable<Llibre> {
     return this.http.get<LlibreApi[]>(this.urlLlibres).pipe(

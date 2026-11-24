@@ -1,23 +1,17 @@
-<form class="filtres" #formulari="ngForm" (ngSubmit)="onAplicar()" aria-label="Filtres del catàleg">
+<form class="filtres" [formGroup]="formulari" (ngSubmit)="onAplicar()" aria-label="Cerca del catàleg">
   <div class="camp">
     <label for="text">Buscar per títol o autor</label>
-    <input
-      id="text"
-      name="text"
-      type="search"
-      [(ngModel)]="filtres.text"
-      #campText="ngModel"
-      required
-      minlength="3"
-      aria-describedby="text-ajuda text-error"
-    />
+    <input id="text" type="search" formControlName="text" aria-describedby="text-ajuda text-error" />
     <small id="text-ajuda">Mínim 3 caràcters.</small>
-    @if (campText.invalid && (campText.dirty || campText.touched)) {
+    @if (textControl.pending) {
+      <small role="status">Comprovant resultats...</small>
+    }
+    @if (textControl.invalid && (textControl.dirty || textControl.touched)) {
       <strong id="text-error" class="error" role="alert">
-        @if (campText.errors?.['required']) {
-          Cal escriure un text de busqueda.
-        } @else {
+        @if (textControl.hasError('minlength')) {
           El text ha de tenir mínim 3 caràcters.
+        } @else if (textControl.hasError('senseResultats')) {
+          Cap llibre coincideix amb aquest terme.
         }
       </strong>
     }
@@ -25,7 +19,7 @@
 
   <div class="camp">
     <label for="categoria">Categoria</label>
-    <select id="categoria" name="categoria" [(ngModel)]="filtres.categoria">
+    <select id="categoria" formControlName="categoria">
       <option value="">Totes</option>
       @for (categoria of categories; track categoria) {
         <option [value]="categoria">{{ categoria }}</option>
@@ -34,7 +28,18 @@
   </div>
 
   <div class="accions">
-    <button type="submit" [disabled]="formulari.invalid">Aplicar filtres</button>
-    <button type="button" (click)="onRestablir(formulari)">Restablir</button>
+    <button type="submit" [disabled]="formulari.invalid || formulari.pending">Cercar</button>
+    <button type="button" (click)="onNetejar()">Netejar cerca</button>
   </div>
 </form>
+
+@if (historialService.historial().length > 0) {
+  <section class="historial" aria-label="Historial de cerques">
+    <h2>Cerques recents</h2>
+    <ul>
+      @for (terme of historialService.historial(); track terme) {
+        <li><button type="button" (click)="onRecuperar(terme)">{{ terme }}</button></li>
+      }
+    </ul>
+  </section>
+}
