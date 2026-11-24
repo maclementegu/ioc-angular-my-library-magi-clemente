@@ -1,10 +1,10 @@
-import { BarraFiltresComponent } from './components/barra-filtres/barra-filtres.component';
-import { FiltresLlibre, Llibre } from './models/llibre.model';
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { LlistaLlibresComponent } from './components/llista-llibres/llista-llibres.component';
-import { LLIBRES_MOCK } from './mocks/dades-mocks';
 import { DatePipe } from '@angular/common';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { BarraFiltresComponent } from './components/barra-filtres/barra-filtres.component';
+import { LlistaLlibresComponent } from './components/llista-llibres/llista-llibres.component';
+import { FiltresLlibre, Llibre } from './models/llibre.model';
+import { LlibreService } from './services/llibre.service';
 
 @Component({
   imports: [RouterOutlet, LlistaLlibresComponent, BarraFiltresComponent, DatePipe],
@@ -12,31 +12,44 @@ import { DatePipe } from '@angular/common';
   styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
 })
-export class App {
+export class App implements OnInit {
+  protected readonly llibreService = inject(LlibreService);
   public nomAplicacio = 'MyLibrary';
-  protected readonly title = signal('ioc-angular-my-library-magi-clemente');
-
-  public llibres: Llibre[] = LLIBRES_MOCK;
   public llibreSeleccionat: Llibre | null = null;
-    public filtres: FiltresLlibre = { text: '', categoria: '' };
+  public missatgeCreacio = signal('');
 
-  get llibresFiltrats(): Llibre[] {
-    const text = this.filtres.text.trim().toLowerCase();
-    return this.llibres.filter((llibre) => {
-      const coincideixText =
-        !text ||
-        llibre.titol.toLowerCase().includes(text) ||
-        llibre.autor.toLowerCase().includes(text);
-      const coincideixCategoria =
-        !this.filtres.categoria || llibre.categoria === this.filtres.categoria;
-      return coincideixText && coincideixCategoria;
-    });
+  ngOnInit(): void {
+    this.llibreService.cerca({ text: '', categoria: '' });
   }
 
   onFiltresCanviats(filtres: FiltresLlibre): void {
-    this.filtres = filtres;
+    this.llibreService.cerca(filtres);
   }
-    onTancarDetall(): void {
+
+  onReintentar(): void {
+    this.llibreService.reintentar();
+  }
+
+  onAfegirDeProva(): void {
+    this.llibreService
+      .crearLlibre({
+        titol: 'Llibre de prova',
+        autor: 'Autor de prova',
+        descripcio: 'Creat amb POST des de MyLibrary.',
+        categoria: 'Novel·la',
+        valoracio: 3,
+        destacat: false,
+      })
+      .subscribe({
+        next: (llibre) => {
+          this.llibreSeleccionat = llibre;
+          this.missatgeCreacio.set(`Llibre "${llibre.titol}" creat amb POST (id ${llibre.id}).`);
+        },
+        error: () => this.missatgeCreacio.set("No s'ha pogut crear el llibre. Torna-ho a provar."),
+      });
+  }
+
+  onTancarDetall(): void {
     this.llibreSeleccionat = null;
   }
 

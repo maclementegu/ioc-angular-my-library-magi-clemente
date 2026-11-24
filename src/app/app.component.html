@@ -8,22 +8,36 @@
 
   <div class="disposicio">
     <section class="principal" aria-label="Catàleg de llibres">
-      <app-barra-filtres (filtresCanviats)="onFiltresCanviats($event)" />
+            <app-barra-filtres (filtresCanviats)="onFiltresCanviats($event)" />
 
-      <p class="comptador" aria-live="polite">
-        Mostrant {{ llibresFiltrats.length }} de {{ llibres.length }} llibres
+      <p class="accions-api">
+        <button type="button" (click)="onAfegirDeProva()">Afegir llibre de prova (POST)</button>
       </p>
+      <p class="missatge-creacio" role="status">{{ missatgeCreacio() }}</p>
 
-      @if (llibresFiltrats.length > 0) {
-        <app-llista-llibres
-          [llibres]="llibresFiltrats"
-          [llibreSeleccionatId]="llibreSeleccionat?.id ?? null"
-          (selecciona)="onSelecciona($event)"
-        />
+      @let estat = llibreService.estat();
+
+      @if (estat.fase === 'carregant') {
+        <p class="estat-carrega" role="status">Carregant llibres...</p>
+      } @else if (estat.fase === 'error') {
+        <div class="estat-error" role="alert">
+          <h2>Error en carregar els llibres</h2>
+          <p>{{ estat.error }}</p>
+          <button type="button" (click)="onReintentar()">Reintentar</button>
+        </div>
       } @else {
-        <p class="sense-resultats" role="status">
-          No s'ha trobat cap llibre amb aquests filtres. Prova amb un altre text o categoria.
-        </p>
+        <p class="comptador" aria-live="polite">Mostrant {{ estat.llibres.length }} llibres</p>
+        @if (estat.llibres.length > 0) {
+          <app-llista-llibres
+            [llibres]="estat.llibres"
+            [llibreSeleccionatId]="llibreSeleccionat?.id ?? null"
+            (selecciona)="onSelecciona($event)"
+          />
+        } @else {
+          <p class="sense-resultats" role="status">
+            No s'ha trobat cap llibre amb aquests filtres. Prova amb un altre text o categoria.
+          </p>
+        }
       }
     </section>
 

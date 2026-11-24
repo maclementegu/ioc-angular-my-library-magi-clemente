@@ -85,3 +85,14 @@ dd {
 .skip-link:focus {
   top: 0.5rem;
 }
+.estat-carrega {
+  padding: 0.75rem 1rem;
+  background: #eef3ff;
+  border: 1px solid #245bff;
+}
+
+.estat-error {
+  padding: 0.75rem 1rem;
+  background: #fff2ef;
+  border: 2px solid #8a1f11;
+}
