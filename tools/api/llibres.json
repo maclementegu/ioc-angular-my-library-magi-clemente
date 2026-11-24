@@ -1,0 +1,14 @@
+{
+  "llibres": [
+    { "id": "1", "titol": "  Cent anys de solitud ", "autor": "Gabriel García Márquez", "descripcio": "Saga dels Buendía a Macondo.", "categoria": "novel·la", "data_afegida": "2026-09-01", "valoracio": "5", "destacat": true },
+    { "id": "2", "titol": "El Hobbit", "autor": "J. R. R. Tolkien", "descripcio": "  ", "categoria": "FANTASIA", "data_afegida": "2026-09-03", "valoracio": 4, "destacat": false },
+    { "id": "3", "titol": "Ombra del vent", "autor": "Carlos Ruiz Zafón", "descripcio": "Misteri a la Barcelona de postguerra.", "categoria": "Novel·la", "data_afegida": "2026-09-05", "valoracio": "5" },
+    { "id": "4", "titol": "Fundació", "autor": "Isaac Asimov", "descripcio": "Imperi galàctic i psicohistòria.", "categoria": "ciència-ficció", "data_afegida": "2026-09-08", "valoracio": 4, "destacat": true },
+    { "id": "5", "titol": "Sapiens", "autor": " Yuval Noah Harari", "descripcio": "Breu història de la humanitat.", "categoria": "Història", "data_afegida": "2026-09-10", "valoracio": "4" },
+    { "id": "6", "titol": "Rimas i Leyendas", "autor": "Gustavo Adolfo Bécquer", "descripcio": "Poesia romàntica.", "categoria": "poesia", "data_afegida": "2026-09-12", "valoracio": 3, "destacat": false },
+    { "id": "7", "titol": "Cosmos", "autor": "Carl Sagan", "descripcio": "Viatge per l'univers.", "categoria": "Ciència", "data_afegida": "2026-09-15", "valoracio": "5", "destacat": true },
+    { "id": "8", "titol": "Dune", "autor": "Frank Herbert", "descripcio": "Intriga i poder a Arrakis.", "categoria": "Ciència-ficció", "data_afegida": "2026-09-18", "valoracio": 5 },
+    { "id": "9", "titol": "La plaça del Diamant", "autor": "Mercè Rodoreda", "descripcio": "Novel·la sobre la Barcelona de la guerra.", "categoria": "NOVEL·LA", "data_afegida": "2026-09-20", "valoracio": "4" },
+    { "id": "10", "titol": "El nom del vent", "autor": "Patrick Rothfuss", "descripcio": "", "categoria": "fantasia", "data_afegida": "2026-09-22", "valoracio": 4, "destacat": true }
+  ]
+}
