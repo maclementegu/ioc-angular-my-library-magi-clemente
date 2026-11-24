@@ -1,37 +1,66 @@
-# Nom de l'aplicació
-MyLibrary
+# MyLibrary
+
 ## Autor/a
-Magí Clemente 
+
+Magí Clemente
+
 ## Descripció
-MyLibrary és un catàleg de llibres per consultar i organitzar una biblioteca personal. S'anirà ampliant durant el semestre
+
+MyLibrary és un catàleg de llibres per consultar i organitzar una biblioteca personal. Carrega els llibres des d'una API local, permet cercar-los amb un formulari reactiu i desar-ne l'historial de cerques.
+
 ## Versions utilitzades
+
 - Node.js: v24.21.0
 - npm: 11.19.0
 - Angular CLI: 22.2.2
-- Angular: 22.2.2
+- Angular: 22.2.x
+- TypeScript: 6.0.x
+- json-server: 1.0.0-beta.15
 - Git: 2.56.0.windows.2
-- typescript 6.0.3
-## Com crear i executar el projecte
-Per crear el projecte: ng new ioc-angular-my-library-magi-clemente --routing --style=scss --ssr=false --standalone --file-name-style-guide=2016 --skip-git --package-manager=npm
-Per executar el projecte: npm install
+
+## Com executar el projecte
+
+```
+npm install
+npm run api
 ng serve
-## Estat de l'EAC1
-EAC compleatat amb els cinc exercicis.
-## Estat de l'EAC2
+```
 
-Completat: model de dades i dades mock, components amb `@Input` i `@Output`, formulari de filtres amb `FormsModule`, validacions, control de flux amb `@for` i `@if`/`@else`, comptador, estat sense resultats, panell de detall, pipe `date`, accessibilitat i disseny responsive. Els canvis són a la branca `ra2-components`.
+`npm run api` arrenca l'API a `http://localhost:4301` (fitxer `tools/api/llibres.json`). `ng serve` arrenca Angular a `http://localhost:4200`. Calen dos terminals.
 
-## Components creats
+Altres comandes: `npm test -- --no-watch` i `npm run build`.
 
-| Component
-| `EtiquetaLlibreComponent` Mostra la categoria del llibre com a distintiu 
-| `TargetaLlibreComponent`  Mostra un llibre i avisa el component pare quan se selecciona 
-| `LlistaLlibresComponent`  Mostra les targetes amb `@for` i reenvia la selecció 
-| `BarraFiltresComponent`   Formulari de filtres amb `FormsModule`, `required` i `minlength` 
-| `App` Guarda l'estat: filtres, llibre seleccionat i panell de detall
+## Branca de l'EAC3
 
-## Enllaç del repositori
+`ra3-serveis`: https://github.com/maclementegu/ioc-angular-my-library-magi-clemente/tree/ra3-serveis
 
-- Repositori: https://github.com/maclementegu/ioc-angular-my-library-magi-clemente
-- Branca ra1-setup: https://github.com/maclementegu/ioc-angular-my-library-magi-clemente/tree/ra1-setup
-- Branca ra2-components: https://github.com/maclementegu/ioc-angular-my-library-magi-clemente/tree/ra2-components
+## Estat de l'EAC3
+
+- API local amb `json-server` (10 llibres) i URL base centralitzada a `src/app/config/api.config.ts`.
+- Models separats (`LlibreApi` i `Llibre`) i adaptador amb normalització.
+- `LlibreService` amb GET, POST, estats de càrrega i error, reintent i `switchMap`.
+- Formulari de cerca reactiu amb validació síncrona i asíncrona, debounce i historial a `localStorage`.
+- Banner d'error amb botó Reintentar.
+
+## Serveis, models i formularis
+
+| Element | Fitxer |
+|---|---|
+| Servei HTTP | `src/app/services/llibre.service.ts` |
+| Servei d'historial | `src/app/services/historial-cerques.service.ts` |
+| Model de l'API | `src/app/models/llibre-api.model.ts` |
+| Model intern | `src/app/models/llibre.model.ts` |
+| Adaptador | `src/app/adaptadors/llibre.adaptador.ts` |
+| Validador asíncron | `src/app/validadors/terme-amb-resultats.validator.ts` |
+| Formulari de cerca | `src/app/components/barra-filtres/` |
+
+## Documentació tècnica
+
+- `docs/serveis.md`
+- `docs/models.md`
+- `docs/formularis.md`
+
+## Estat d'EAC anteriors
+
+- EAC1: completat (branca `ra1-setup`).
+- EAC2: completat (branca `ra2-components`).
